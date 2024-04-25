@@ -16,7 +16,7 @@ git clone https://github.com/zoebalowi/mvc
 **2. Navigera till projektets katalog:** Gå in i den klonade katalogen genom att köra:
 
 ```bash
-cd <projektkatalogens namn>
+cd <katalog namn>
 ```
 **3. Installera beroenden:** För att installera projektets beroenden, kör:
 
