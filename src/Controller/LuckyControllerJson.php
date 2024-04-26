@@ -2,42 +2,36 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
-class LuckyControllerJson
+class LuckyControllerJson extends AbstractController
 {
-    
+    private $twig;
+
+    public function __construct(Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
     #[Route("/api", name: 'api_index')]
     public function index(): Response
     {
         $routes = [
             'lucky-number' => '/api/lucky/number',
             'quote' => '/api/quote',
-            // Lägg till fler JSON rutter här
         ];
-        $html = '<!DOCTYPE html>';
-        $html .= '<html lang="en">';
-        $html .= '<head>';
-        $html .= '<meta charset="UTF-8">';
-        $html .= '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-        $html .= '<title>API Endpoints</title>';
-        $html .= '</head>';
-        $html .= '<body>';
-        $html .= '<h1>API Endpoints</h1>';
-        $html .= '<ul>';
-        foreach ($routes as $name => $route) {
-            $html .= '<li><a href="' . $route . '">' . $name . '</a></li>';
-        }
-        $html .= '</ul>';
-        $html .= '</body>';
-        $html .= '</html>';
+
+        $html = $this->twig->render('api.html.twig', ['routes' => $routes]);
 
         return new Response($html);
+
     }
 
-    #[Route("/api/lucky/number")]
+    #[Route("/api/lucky/number", name: 'jsonNumber')]
     public function jsonNumber(): Response
     {
         $number = random_int(0, 100);
@@ -56,7 +50,7 @@ class LuckyControllerJson
         return $response;
     }
 
-    #[Route("/api/quote")]
+    #[Route("/api/quote", name: 'quote')]
     public function quote(): Response
     {
         $quotes = [
