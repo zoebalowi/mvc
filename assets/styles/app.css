@@ -1,6 +1,6 @@
 main {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 600px;
     min-height: 100vh;
 
 }
@@ -36,8 +36,15 @@ footer {
     color: white;
     padding: 20px 0;
     text-align: center;
+    margin-top: auto;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
 /* body {
     background: url('../images/background.jpg');
     background-size: cover;
@@ -46,8 +53,8 @@ footer {
 
 header {
     height: 150px;
-    background-color: rgb(142, 228, 142);
-    border-bottom: 2px solid green;
+    background: linear-gradient(to bottom,#fff,#a2fc9d, #008000);
+    border-bottom: 2px solid #008000;
 }
 
 h1 {
@@ -72,14 +79,14 @@ h1 {
 .site-title {
     display: block;
     text-align: center; 
-    font-size: 24px; 
+    font-size: 28px;
 }
 
 .rotate {
     animation: rotation 2s infinite linear;
     width: 150px;
     height: auto;
-    border-radius: 50%;
+    border-radius: 30%;
 }
 
 @keyframes rotation {
@@ -89,4 +96,25 @@ h1 {
     to {
       transform: rotate(359deg);
     }
+}
+ 
+.rotate-2 {
+    animation: rotation 5s infinite linear;
+    width: 150px;
+    height: auto;
+    /* transform: translateX(200px); */
+}
+
+.image-container img {
+    margin-right: 100px;
+}
+
+.lankar a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.lankar a:hover {
+    color: #aaf6aa;
 }
