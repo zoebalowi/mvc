@@ -70,4 +70,3 @@ class LuckyControllerJson extends AbstractController
         return new JsonResponse($data);
     }
 }
-
